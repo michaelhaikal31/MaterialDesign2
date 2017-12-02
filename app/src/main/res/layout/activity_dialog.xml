@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.haikal.materialdesign2.Dialog.DialogActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/Dialog1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="15"
+            android:text="Dialog1"
+            android:textColor="@android:color/white"
+            android:theme="@style/MyButton"/>
+        <Button
+            android:id="@+id/Dialog2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="15"
+            android:text="Dialog2"
+            android:textColor="@android:color/white"
+            android:theme="@style/MyButton"/>
+        <Button
+            android:id="@+id/Dialog3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="15"
+            android:text="Dialog3"
+            android:textColor="@android:color/white"
+            android:theme="@style/MyButton"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

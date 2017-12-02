@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Item">
+        <item>Text to Speech</item>
+        <item>ListViewPager</item>
+        <item>Notification</item>
+        <item>Dialog View</item>
+        <item>Drag And Swipe</item>
+        <item>SimpleCofeeOrder</item>
+        <item>Simple ToDo</item>
+    </string-array>
+</resources>

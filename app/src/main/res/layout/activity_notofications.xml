@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.haikal.materialdesign2.Notifications.NotoficationsActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/notifText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="15"
+        android:text="Notif With Text"
+        android:textColor="@android:color/white"
+        android:theme="@style/MyButton"/>
+    <Button
+        android:id="@+id/notifImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="15"
+        android:text="Notif With Image"
+        android:textColor="@android:color/white"
+        android:theme="@style/MyButton"/>
+    <Button
+        android:id="@+id/notifLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="15"
+        android:text="Notif With Layout"
+        android:textColor="@android:color/white"
+        android:theme="@style/MyButton"/>
+
+</LinearLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/admod_notif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/admod_Notification"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
