@@ -8,5 +8,11 @@
         <item>Drag And Swipe</item>
         <item>SimpleCofeeOrder</item>
         <item>Simple ToDo</item>
+        <item>NavigationTapStrap</item>
+    </string-array>
+    <string-array name="tabs">
+        <item>Nav</item>
+        <item>Item</item>
+        <item>Step</item>
     </string-array>
 </resources>

@@ -23,9 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AndroidSpeech.SpeechActivity" />
-        <activity android:name=".SwipeRefresh.SwipeRefreshActivity" />
         <activity android:name=".Notifications.NotoficationsActivity" />
-        <activity android:name=".NavigationDrawer.NavDrawerActivity" />
         <activity android:name=".Dialog.DialogActivity" />
         <activity
             android:name=".SimpleCofeeOrder.SimpleCofeeActivity"

@@ -18,6 +18,7 @@ import com.example.haikal.materialdesign2.AndroidSpeech.SpeechActivity;
 import com.example.haikal.materialdesign2.Dialog.DialogActivity;
 import com.example.haikal.materialdesign2.DragAndSwipeRecyclerView.DragAndSwipeRecyclerViewActivity;
 import com.example.haikal.materialdesign2.ListViewPager.ListViewPagerActivity;
+import com.example.haikal.materialdesign2.NavigationTabStap.NavigationTapStapActivity;
 import com.example.haikal.materialdesign2.Notifications.NotoficationsActivity;
 import com.example.haikal.materialdesign2.R;
 import com.example.haikal.materialdesign2.SimpleCofeeOrder.SimpleCofeeActivity;
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getBaseContext(), SimpleCofeeActivity.class));
                         break;
                     case 6: startActivity(new Intent(getBaseContext(), SimpleToDoActivity.class));
+                        break;
+                    case 7: startActivity(new Intent(getBaseContext(), NavigationTapStapActivity.class));
                         break;
                     default:
                         break;
