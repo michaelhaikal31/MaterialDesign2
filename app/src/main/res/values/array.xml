@@ -6,9 +6,10 @@
         <item>Notification</item>
         <item>Dialog View</item>
         <item>Drag And Swipe</item>
-        <item>SimpleCofeeOrder</item>
+        <item>Simple Cofee Order</item>
         <item>Simple ToDo</item>
-        <item>NavigationTapStrap</item>
+        <item>Navigation Tap Strap</item>
+        <item>Sound Recoder</item>
     </string-array>
     <string-array name="tabs">
         <item>Nav</item>

@@ -31,9 +31,16 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".DragAndSwipeRecyclerView.DragAndSwipeRecyclerViewActivity" />
         <activity android:name=".ListViewPager.ListViewPagerActivity" />
-        <activity android:name=".SoundRecorder.SoundRecorderActivity" />
+        <activity android:name=".SoundRecorder.activities.SoundRecorderActivity" />
         <activity android:name=".SimpleToDo.SimpleToDoActivity" />
-        <activity android:name=".NavigationTabStap.NavigationTapStapActivity"></activity>
+        <activity android:name=".NavigationTabStap.NavigationTapStapActivity" />
+        <activity
+            android:name=".SoundRecorder.activities.SettingsPrefActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SoundRecorder.SettingAcity.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>

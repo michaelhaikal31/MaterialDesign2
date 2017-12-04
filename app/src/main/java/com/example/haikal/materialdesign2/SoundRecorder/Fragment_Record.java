@@ -1,9 +1,9 @@
 package com.example.haikal.materialdesign2.SoundRecorder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +56,7 @@ public class Fragment_Record extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        /*what fungtion this? */
-        //position = getArguments().getInt(ARG_POSITION);
+        position = getArguments().getInt(ARG_POSITION);
     }
 
     @Override
@@ -84,7 +84,15 @@ public class Fragment_Record extends Fragment {
                 mPauseRecording = !mPauseRecording;
             }
         });
-
+        mPauseButton = (Button)recordView.findViewById(R.id.btnPause);
+        mPauseButton.setVisibility(View.GONE);
+        mPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onPauseRecord(mPauseRecording);
+                mPauseRecording = !mPauseRecording;
+            }
+        });
         return recordView;
     }
 
@@ -106,8 +114,8 @@ public class Fragment_Record extends Fragment {
     }
 
     private void onRecord(boolean start) {
-       /* Intent inflater to servies Recoding */
-       //Intent intent = new Intent...
+        Intent intent =new Intent(getActivity(), RecordingService.class);
+
         if(start){
            /*Start Recoding */
            mRecordButton.setImageResource(R.drawable.ic_pause_grey_300_24dp);
@@ -137,7 +145,7 @@ public class Fragment_Record extends Fragment {
               }
           });
          /*Start Recoding Service */
-         //getActivity().startService(intent);
+         getActivity().startService(intent);
            /*keep Screen on While Recording.. */
            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 

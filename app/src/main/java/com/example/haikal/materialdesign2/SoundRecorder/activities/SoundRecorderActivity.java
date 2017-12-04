@@ -1,5 +1,6 @@
-package com.example.haikal.materialdesign2.SoundRecorder;
+package com.example.haikal.materialdesign2.SoundRecorder.activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,13 +8,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.haikal.materialdesign2.ListViewPager.MainFragment;
 import com.example.haikal.materialdesign2.R;
+import com.example.haikal.materialdesign2.SoundRecorder.Fragment_Record;
+import com.example.haikal.materialdesign2.SoundRecorder.SettingAcity.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +34,8 @@ private ViewPager viewPager;
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Fragment_Record(), "ONE");
-        adapter.addFragment(new MainFragment(), "TWO");
-        adapter.addFragment(new MainFragment(), "THREE");
+        adapter.addFragment(new Fragment_Record(), "RECORD");
+        adapter.addFragment(new MainFragment(), "SAVE RECORDINGS");
         viewPager.setAdapter(adapter);
     }
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -68,9 +68,22 @@ private ViewPager viewPager;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_recoder, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.setting_recoder : startActivity(new Intent(getBaseContext(), SettingsPrefActivity.class));
+            break;
+            case R.id.setting_activity : startActivity(new Intent(getBaseContext(),SettingsActivity.class));
+            break;
+            default: break;
+        }
         return super.onOptionsItemSelected(item);
     }
+
 }
 
