@@ -36,8 +36,8 @@ public class SimpleToDoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_to_do);
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        this.getSupportActionBar().setHomeButtonEnabled(true);
         this.getSupportActionBar().setTitle(SimpleToDoActivity.class.getSimpleName());
        /*Call Class TaskDbHelper */
         mHelper = new TaskDbHelper(this);
@@ -132,9 +132,7 @@ public class SimpleToDoActivity extends AppCompatActivity {
             case R.id.addToDo:
                 AddToDataBase();
                 break;
-            case android.R.id.home:
-                onBackPressed();
-                break;
+                default: break;
         }
         return super.onOptionsItemSelected(item);
     }

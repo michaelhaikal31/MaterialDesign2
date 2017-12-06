@@ -28,6 +28,8 @@ public class NotoficationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notofications);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setHomeButtonEnabled(true);
+
         this.getSupportActionBar().setTitle(NotificationCompat.class.getSimpleName());
 
 
@@ -97,14 +99,7 @@ public class NotoficationsActivity extends AppCompatActivity {
         notificationManagerCompat.notify(0x1234, notification);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if(id == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
     private void Admod() {
         //admod
         AdView adView = (AdView)findViewById(R.id.admod_notif);

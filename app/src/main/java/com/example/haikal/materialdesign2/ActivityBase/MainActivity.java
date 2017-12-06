@@ -22,6 +22,7 @@ import com.example.haikal.materialdesign2.R;
 import com.example.haikal.materialdesign2.SimpleCofeeOrder.SimpleCofeeActivity;
 import com.example.haikal.materialdesign2.SimpleToDo.SimpleToDoActivity;
 import com.example.haikal.materialdesign2.SoundRecorder.activities.SoundRecorderActivity;
+import com.example.haikal.materialdesign2.Zoo.ZooActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ListView list_item;
@@ -68,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 8:
                         startActivity(new Intent(getBaseContext(), SoundRecorderActivity.class));
+                        break;
+                    case 9:
+                        startActivity(new Intent(getBaseContext(), ZooActivity.class));
                         break;
                     default:
                         break;

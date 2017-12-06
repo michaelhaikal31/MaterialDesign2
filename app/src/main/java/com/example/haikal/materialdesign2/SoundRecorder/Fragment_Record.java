@@ -25,21 +25,21 @@ import java.io.File;
 
 public class Fragment_Record extends Fragment {
     private static final String ARG_POSITION = "position";
-    private int position = 0;
-    private int mRecordPromptCount = 0;
-    private Chronometer mChronometer = null;
-    private TextView mRecordingPrompt;
+    private int position;
 
     //Recording controls
     private FloatingActionButton mRecordButton = null;
     private Button mPauseButton = null;
 
+    private TextView mRecordingPrompt;
+    private int mRecordPromptCount = 0;
+
     private boolean mStartRecording = true;
     private boolean mPauseRecording = true;
 
+    private Chronometer mChronometer = null;
     long timeWhenPaused = 0;
 
-    /*for what this metode ? */
     public static Fragment_Record newInstance(int position) {
         Fragment_Record f = new Fragment_Record();
         Bundle b = new Bundle();
@@ -55,7 +55,6 @@ public class Fragment_Record extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /*what fungtion this? */
         position = getArguments().getInt(ARG_POSITION);
     }
 
@@ -63,6 +62,7 @@ public class Fragment_Record extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View recordView = inflater.inflate(R.layout.fragment_record, container, false);
         mChronometer = (Chronometer) recordView.findViewById(R.id.idchronometer);
+
        /*Update Recording Prompt Text */
         mRecordingPrompt = (TextView) recordView.findViewById(R.id.recording_status_text);
         mRecordButton = (FloatingActionButton) recordView.findViewById(R.id.btnRecord);
@@ -84,33 +84,8 @@ public class Fragment_Record extends Fragment {
                 mPauseRecording = !mPauseRecording;
             }
         });
-        mPauseButton = (Button)recordView.findViewById(R.id.btnPause);
-        mPauseButton.setVisibility(View.GONE);
-        mPauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onPauseRecord(mPauseRecording);
-                mPauseRecording = !mPauseRecording;
-            }
-        });
-        return recordView;
-    }
 
-   /*TODO : implement Pause Recoding */
-    private void onPauseRecord(boolean pause) {
-        if (pause) {
-           /*Pause Recoding */
-            mPauseButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_play_arrow_grey_300_24dp, 0, 0, 0);
-            mRecordingPrompt.setText((String) getString(R.string.resume_recording_button).toUpperCase());
-            timeWhenPaused = mChronometer.getBase() - SystemClock.elapsedRealtime();
-            mChronometer.stop();
-        }else {
-           /*resume Recording */
-           mPauseButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_pause_grey_300_24dp,0,0,0);
-           mRecordingPrompt.setText((String)getString(R.string.pause_recording_button).toUpperCase());
-           mChronometer.setBase(SystemClock.elapsedRealtime() + timeWhenPaused);
-           mChronometer.start();
-        }
+        return recordView;
     }
 
     private void onRecord(boolean start) {
@@ -164,4 +139,21 @@ public class Fragment_Record extends Fragment {
            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
     }
+
+    private void onPauseRecord(boolean pause) {
+        if (pause) {
+           /*Pause Recoding */
+            mPauseButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_play_arrow_grey_300_24dp, 0, 0, 0);
+            mRecordingPrompt.setText((String) getString(R.string.resume_recording_button).toUpperCase());
+            timeWhenPaused = mChronometer.getBase() - SystemClock.elapsedRealtime();
+            mChronometer.stop();
+        }else {
+           /*resume Recording */
+            mPauseButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_pause_grey_300_24dp,0,0,0);
+            mRecordingPrompt.setText((String)getString(R.string.pause_recording_button).toUpperCase());
+            mChronometer.setBase(SystemClock.elapsedRealtime() + timeWhenPaused);
+            mChronometer.start();
+        }
+    }
+
 }

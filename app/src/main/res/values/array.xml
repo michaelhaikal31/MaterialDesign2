@@ -10,6 +10,7 @@
         <item>Simple ToDo</item>
         <item>Navigation Tap Strap</item>
         <item>Sound Recoder</item>
+        <item>Zoo</item>
     </string-array>
     <string-array name="tabs">
         <item>Nav</item>

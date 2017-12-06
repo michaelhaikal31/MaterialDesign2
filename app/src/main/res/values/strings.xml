@@ -3,6 +3,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_speech">SpeechActivity</string>
 
+   <!--Toggle Drawer -->
+    <string name="open_Drawer">Select Item</string>
+    <string name="close_Drawer">Zoo</string>
+
     <!-- admod  -->
     <string name="admod_Speech">ca-app-pub-4359007609570094/7381924590</string>
     <string name="admod_Notification">ca-app-pub-4359007609570094/2723799750</string>

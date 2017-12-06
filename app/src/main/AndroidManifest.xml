@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.haikal.materialdesign2">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -40,7 +42,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SoundRecorder.SettingAcity.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".Zoo.ZooActivity"></activity>
     </application>
 
 </manifest>
