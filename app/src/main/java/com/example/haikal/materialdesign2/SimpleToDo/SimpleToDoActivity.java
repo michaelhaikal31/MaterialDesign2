@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -113,6 +114,7 @@ public class SimpleToDoActivity extends AppCompatActivity {
                 viewHolder = new ViewHolder();
                 viewHolder.tvtodo = (TextView) rowView.findViewById(R.id.tvName);
                 viewHolder.tvtime = (TextView) rowView.findViewById(R.id.tvDate);
+                viewHolder.btn_delete = (Button)rowView.findViewById(R.id.btnDelete);
                 rowView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) rowView.getTag();
@@ -120,13 +122,26 @@ public class SimpleToDoActivity extends AppCompatActivity {
 
             Itemodo item = itemodoList.get(position);
             viewHolder.tvtodo.setText(item.getTextTodo());
-            viewHolder.tvtime.setText(item.getTimeTodo().toString());
+            viewHolder.tvtime.setText((new Date(item.getTimeTodo())).toString());
+            viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SQLiteDatabase db = mHelper.getWritableDatabase();
+                    db.delete(TaskContract.TaskEntry.TABLE,
+                            TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
+                            new String[]{item.getTextTodo()});
+                    db.close();
+                    UpdateUI();
+
+                }
+            });
             return rowView;
         }
 
         public class ViewHolder {
             public TextView tvtodo;
             public TextView tvtime;
+            public Button btn_delete;
         }
     }
 

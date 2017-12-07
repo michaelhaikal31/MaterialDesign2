@@ -1,7 +1,6 @@
 package com.example.haikal.materialdesign2.Notifications;
 
 import android.app.Notification;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -9,13 +8,16 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.haikal.materialdesign2.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import java.util.Date;
 
 public class NotoficationsActivity extends AppCompatActivity {
     private Button NotifText, NotifImages, NotifLayout;
@@ -31,7 +33,10 @@ public class NotoficationsActivity extends AppCompatActivity {
         this.getSupportActionBar().setHomeButtonEnabled(true);
 
         this.getSupportActionBar().setTitle(NotificationCompat.class.getSimpleName());
-
+        TextView date = (TextView)findViewById(R.id.date);
+        java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getBaseContext());
+        java.text.DateFormat datelong = DateFormat.getMediumDateFormat(getBaseContext());
+        date.setText(timeFormat.format(new Date())+","+datelong.format(new Date()));
 
         //make bitmap image for notif
         profilImageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profileimage);
