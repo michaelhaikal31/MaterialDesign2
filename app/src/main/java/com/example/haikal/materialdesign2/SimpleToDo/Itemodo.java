@@ -6,10 +6,10 @@ import android.widget.TextView;
  * Created by haikal on 30/11/2017.
  */
 
-class Itemodo {
+public class Itemodo {
     private String TextTodo;
-    private String TimeTodo;
-    Itemodo(String textTodo, String timeTodo){
+    private Long TimeTodo;
+    Itemodo(String textTodo, Long timeTodo){
         this.TextTodo = textTodo;
         this.TimeTodo = timeTodo;
     }
@@ -22,11 +22,11 @@ class Itemodo {
         TextTodo = textTodo;
     }
 
-    public String getTimeTodo() {
+    public Long getTimeTodo() {
         return TimeTodo;
     }
 
-    public void setTimeTodo(String timeTodo) {
+    public void setTimeTodo(Long timeTodo) {
         TimeTodo = timeTodo;
     }
 }

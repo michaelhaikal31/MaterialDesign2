@@ -31,6 +31,7 @@ public class SimpleToDoActivity extends AppCompatActivity {
     private TaskDbHelper mHelper;
     private ListView mlistView;
     private ArrayAdapter<String> mAdapter;
+    private ArrayList<Itemodo> taskList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,20 +48,26 @@ public class SimpleToDoActivity extends AppCompatActivity {
     }
 
     private void UpdateUI() {
-        ArrayList<String> taskList = new ArrayList<>();
+        taskList = new ArrayList<Itemodo>();
         SQLiteDatabase db = mHelper.getReadableDatabase();
 
         Cursor cursor = db.query(TaskContract.TaskEntry.TABLE,
                 new String[]{TaskContract.TaskEntry._ID,
-                        TaskContract.TaskEntry.COL_TASK_TITLE},
+                        TaskContract.TaskEntry.COL_TASK_TITLE,
+                        TaskContract.TaskEntry.COL_TASK_TIME},
                 null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             int idx = cursor.getColumnIndex(TaskContract.TaskEntry.COL_TASK_TITLE);
-            taskList.add(cursor.getString(idx));
+            int time = cursor.getColumnIndex(TaskContract.TaskEntry.COL_TASK_TIME);
+
+            Itemodo itemodo = new Itemodo(cursor.getString(idx), cursor.getLong(time));
+            taskList.add(itemodo);
+
+            //taskList.add(cursor.getString(time));
         }
-       /*Default Adapter */
-        if (mAdapter == null) {
+        /*Default Adapter */
+       /* if (mAdapter == null) {
             mAdapter = new ArrayAdapter<String>(this,
                     R.layout.item_todo_layout,
                     R.id.tvName,
@@ -70,32 +77,30 @@ public class SimpleToDoActivity extends AppCompatActivity {
             mAdapter.clear();
             mAdapter.addAll(taskList);
             mAdapter.notifyDataSetChanged();
-        }
+        }*/
+        CustomAdapter customAdapter = new CustomAdapter(getBaseContext(), 0, taskList);
+        mlistView.setAdapter(customAdapter);
         cursor.close();
         db.close();
     }
 
     /*Custom Adaprer if you want add item other */
-    class CustomAdapter extends ArrayAdapter<Itemodo> {
+    public class CustomAdapter extends ArrayAdapter<Itemodo> {
         private Context context;
         private List<Itemodo> itemodoList;
         private int mLayout;
 
-        public CustomAdapter(Context context, int layout, List<Itemodo> itemodoList1) {
-            super(context, layout, itemodoList1);
-            this.context = context;
+        public CustomAdapter(Context context1, int layout, List<Itemodo> itemodos) {
+            super(context1, layout, itemodos);
+            this.context = context1;
             this.mLayout = layout;
-            this.itemodoList = itemodoList1;
+            this.itemodoList = itemodos;
         }
 
         public long getItemId(int position) {
             return position;
         }
 
-        public class ViewHolder {
-            public TextView tvtodo;
-            public TextView tvtime;
-        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -104,7 +109,7 @@ public class SimpleToDoActivity extends AppCompatActivity {
             if (rowView == null) {
 
                 LayoutInflater layoutInflater = getLayoutInflater();
-                rowView = layoutInflater.inflate(mLayout, null, true);
+                rowView = layoutInflater.inflate(R.layout.item_todo_layout, null);
                 viewHolder = new ViewHolder();
                 viewHolder.tvtodo = (TextView) rowView.findViewById(R.id.tvName);
                 viewHolder.tvtime = (TextView) rowView.findViewById(R.id.tvDate);
@@ -115,8 +120,13 @@ public class SimpleToDoActivity extends AppCompatActivity {
 
             Itemodo item = itemodoList.get(position);
             viewHolder.tvtodo.setText(item.getTextTodo());
-            viewHolder.tvtime.setText(item.getTimeTodo());
+            viewHolder.tvtime.setText(item.getTimeTodo().toString());
             return rowView;
+        }
+
+        public class ViewHolder {
+            public TextView tvtodo;
+            public TextView tvtime;
         }
     }
 
@@ -132,7 +142,8 @@ public class SimpleToDoActivity extends AppCompatActivity {
             case R.id.addToDo:
                 AddToDataBase();
                 break;
-                default: break;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -148,9 +159,11 @@ public class SimpleToDoActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String name = String.valueOf(nameEditText.getText());
                         long date = (new Date()).getTime();
+
                         SQLiteDatabase db = mHelper.getWritableDatabase();
                         ContentValues values = new ContentValues();
                         values.put(TaskContract.TaskEntry.COL_TASK_TITLE, name);
+                        values.put(TaskContract.TaskEntry.COL_TASK_TIME, String.valueOf(date));
                         db.insertWithOnConflict(TaskContract.TaskEntry.TABLE,
                                 null, values, SQLiteDatabase.CONFLICT_REPLACE);
                         db.close();
@@ -162,7 +175,7 @@ public class SimpleToDoActivity extends AppCompatActivity {
 
     public void deleteTask(View view) {
         View view1 = (View) view.getParent();
-        TextView taskTextView = (TextView)view1.findViewById(R.id.tvName);
+        TextView taskTextView = (TextView) view1.findViewById(R.id.tvName);
         String task = String.valueOf(taskTextView.getText());
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.delete(TaskContract.TaskEntry.TABLE,
