@@ -54,4 +54,6 @@ dependencies {
 
     //Volley
     compile 'com.github.bumptech.glide:volley-integration:1.4.0'
+    //cardview
+    compile 'com.android.support:cardview-v7:26.1.+'
 }

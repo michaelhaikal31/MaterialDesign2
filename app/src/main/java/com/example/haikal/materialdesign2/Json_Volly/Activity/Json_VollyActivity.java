@@ -1,8 +1,10 @@
-package com.example.haikal.materialdesign2.Json_Volly;
+package com.example.haikal.materialdesign2.Json_Volly.Activity;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -11,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.haikal.materialdesign2.Json_Volly.Adapter.Adapter_Json_Volly;
 import com.example.haikal.materialdesign2.R;
 
 import org.json.JSONArray;
@@ -25,13 +28,21 @@ public class Json_VollyActivity extends AppCompatActivity {
     private ArrayList<HashMap<String, String>> list;
     private String tag_json = "tag_json";
     private ProgressDialog progressDialog;
-    private String url = "sad.com";
-
+    public String url = "sad.com";
+private Adapter_Json_Volly adapter_json_volly;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_json__volly);
 
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView_Json_volly);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+        adapter_json_volly = new Adapter_Json_Volly(this,list);
+        recyclerView.setAdapter(adapter_json_volly);
         progressDialog = new ProgressDialog(this);
 
         list = new ArrayList<HashMap<String, String>>();
