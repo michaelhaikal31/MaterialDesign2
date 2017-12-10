@@ -41,7 +41,7 @@ dependencies {
     compile 'com.melnykov:floatingactionbutton:1.1.0'
     compile 'com.jpardogo.materialtabstrip:library:1.0.6'
 
-    //exten Simple Todo
+    //exten Simple
     implementation "android.arch.lifecycle:extensions:1.0.0"
     implementation "android.arch.persistence.room:runtime:1.0.0"
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
@@ -51,4 +51,7 @@ dependencies {
 
     //Material Design Navigation TapStap
     compile 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
+
+    //Volley
+    compile 'com.github.bumptech.glide:volley-integration:1.4.0'
 }
