@@ -40,11 +40,7 @@
         android:text="Notif With Layout"
         android:textColor="@android:color/white"
         android:theme="@style/MyButton"/>
-        <TextView
-            android:id="@+id/date"
-            android:text="time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
 
 </LinearLayout>
     <com.google.android.gms.ads.AdView

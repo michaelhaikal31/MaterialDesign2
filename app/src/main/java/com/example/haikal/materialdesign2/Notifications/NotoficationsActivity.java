@@ -33,10 +33,6 @@ public class NotoficationsActivity extends AppCompatActivity {
         this.getSupportActionBar().setHomeButtonEnabled(true);
 
         this.getSupportActionBar().setTitle(NotificationCompat.class.getSimpleName());
-        TextView date = (TextView)findViewById(R.id.date);
-        java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getBaseContext());
-        java.text.DateFormat datelong = DateFormat.getMediumDateFormat(getBaseContext());
-        date.setText(timeFormat.format(new Date())+","+datelong.format(new Date()));
 
         //make bitmap image for notif
         profilImageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profileimage);

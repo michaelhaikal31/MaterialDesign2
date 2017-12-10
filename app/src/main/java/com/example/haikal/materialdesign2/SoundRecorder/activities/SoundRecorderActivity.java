@@ -20,24 +20,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SoundRecorderActivity extends AppCompatActivity {
-private ViewPager viewPager;
+    private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound_recorder);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewPager = (ViewPager)findViewById(R.id.viewpager_recoder);
+        viewPager = (ViewPager) findViewById(R.id.viewpager_recoder);
         setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_recoder);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_recoder);
         tabLayout.setupWithViewPager(viewPager);
     }
+
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Fragment_Record(), "RECORD");
         adapter.addFragment(new MainFragment(), "SAVE RECORDINGS");
         viewPager.setAdapter(adapter);
     }
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -75,12 +79,18 @@ private ViewPager viewPager;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.setting_recoder : startActivity(new Intent(getBaseContext(), SettingsPrefActivity.class));
-            break;
-            case R.id.setting_activity : startActivity(new Intent(getBaseContext(),SettingsActivity.class));
-            break;
-            default: break;
+        switch (item.getItemId()) {
+            case R.id.setting_recoder:
+                startActivity(new Intent(getBaseContext(), SettingsPrefActivity.class));
+                break;
+            case R.id.setting_activity:
+                startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                break;
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

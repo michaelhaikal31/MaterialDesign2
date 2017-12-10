@@ -43,7 +43,8 @@
         <activity
             android:name=".SoundRecorder.SettingAcity.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".Zoo.ZooActivity"></activity>
+        <activity android:name=".Zoo.ZooActivity" />
+        <activity android:name=".Json_Volly.Json_VollyActivity"></activity>
     </application>
 
 </manifest>

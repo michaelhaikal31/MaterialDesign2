@@ -25,6 +25,8 @@ import java.io.File;
 
 public class Fragment_Record extends Fragment {
     private static final String ARG_POSITION = "position";
+    private static final String LOG_TAG = Fragment_Record.class.getSimpleName();
+
     private int position;
 
     //Recording controls
@@ -55,7 +57,7 @@ public class Fragment_Record extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        position = getArguments().getInt(ARG_POSITION);
+        //position = getArguments().getInt(ARG_POSITION);
     }
 
     @Override

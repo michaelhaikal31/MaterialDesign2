@@ -37,6 +37,7 @@ public class SettingFragment extends PreferenceFragment {
         preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
+                //call Fragment Dialog view
                 LicensesFragment licensesFragment = new LicensesFragment();
                 licensesFragment.show(((SettingsPrefActivity)getActivity()).getSupportFragmentManager().beginTransaction(), "dialog_licenses");
                 return true;

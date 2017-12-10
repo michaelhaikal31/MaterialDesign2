@@ -26,11 +26,11 @@ public class SettingsPrefActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
         }
+
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_record, new SettingFragment())
                 .commit();
-
 
     }
 
