@@ -14,6 +14,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.haikal.materialdesign2.Json_Volly.Adapter.Adapter_Json_Volly;
+import com.example.haikal.materialdesign2.Json_Volly.App.AppController;
+import com.example.haikal.materialdesign2.Json_Volly.helper.helper;
 import com.example.haikal.materialdesign2.R;
 
 import org.json.JSONArray;
@@ -24,25 +26,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Json_VollyActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private ArrayList<HashMap<String, String>> list;
+
     private String tag_json = "tag_json";
     private ProgressDialog progressDialog;
-    public String url = "sad.com";
-private Adapter_Json_Volly adapter_json_volly;
+
+    private String url = helper.main_url + "getdata.php";
+    private Adapter_Json_Volly adapter_json_volly;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_json__volly);
 
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView_Json_volly);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        adapter_json_volly = new Adapter_Json_Volly(this, list);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_Json_volly);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        adapter_json_volly = new Adapter_Json_Volly(this,list);
         recyclerView.setAdapter(adapter_json_volly);
+
         progressDialog = new ProgressDialog(this);
 
         list = new ArrayList<HashMap<String, String>>();
@@ -59,12 +68,12 @@ private Adapter_Json_Volly adapter_json_volly;
             public void onResponse(JSONObject response) {
                 Log.d("RESPONSE", response.toString());
 
-                if(progressDialog.isShowing())
+                if (progressDialog.isShowing())
                     progressDialog.dismiss();
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("handphone");
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         HashMap<String, String> hashMap = new HashMap<>();
                         //put(key, value)
@@ -84,10 +93,10 @@ private Adapter_Json_Volly adapter_json_volly;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.d("ERROR",error.getMessage());
+                VolleyLog.d("ERROR", error.getMessage());
                 progressDialog.dismiss();
             }
         });
-
+        AppController.getAppController().addToRequestQueue(jsonObjectRequest, tag_json);
     }
 }

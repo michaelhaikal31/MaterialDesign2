@@ -13,8 +13,7 @@ import com.android.volley.toolbox.Volley;
  */
 
 public class AppController extends Application {
-    public static final String TAG = AppController
-            .class.getSimpleName();
+    public static final String TAG = AppController.class.getSimpleName();
 
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
@@ -27,34 +26,34 @@ public class AppController extends Application {
         appController = this;
     }
 
-    public  static synchronized AppController getAppController(){
+    public static synchronized AppController getAppController() {
         return appController;
     }
 
-    public RequestQueue getRequestQueue(){
-        if (requestQueue == null){
+    public RequestQueue getRequestQueue() {
+        if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
         return requestQueue;
     }
 
-    public ImageLoader getImageLoader(){
+/*    public ImageLoader getImageLoader() {
         getRequestQueue();
-        if (imageLoader == null){
-            imageLoader = new ImageLoader(this.requestQueue
-                    , new LruB);
-        }
-        return this.imageLoader;
-    }
+       if(imageLoader == null){
+           imageLoader = new ImageLoader(this.requestQueue, new LruBitmapCache())
+       }
 
-    public <T> void addToRequestQueue(Request<T> request, String tag){
+        return this.imageLoader;
+    }*/
+
+    public <T> void addToRequestQueue(Request<T> request, String tag) {
         // set the default tag if tag is empty
         request.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
         getRequestQueue().add(request);
     }
 
-    public void cancelPendingRequest(Object object){
-        if (requestQueue != null){
+    public void cancelPendingRequest(Object object) {
+        if (requestQueue != null) {
             requestQueue.cancelAll(object);
         }
     }
