@@ -26,9 +26,9 @@ import java.util.zip.Inflater;
 public class Adapter_Json_Volly extends RecyclerView.Adapter<Adapter_Json_Volly.ViewHolder> {
     private Context context;
     private ArrayList<HashMap<String, String>> list;
-    public Adapter_Json_Volly(Context context, ArrayList<HashMap<String,String>> list){
+    public Adapter_Json_Volly(Context context, ArrayList<HashMap<String,String>> mlist){
         this.context =context;
-        this.list = list;
+        this.list = mlist;
     }
     @Override
     public Adapter_Json_Volly.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

@@ -50,12 +50,13 @@ public class Json_VollyActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter_json_volly);
+
 
         progressDialog = new ProgressDialog(this);
 
         list = new ArrayList<HashMap<String, String>>();
         showData();
+        recyclerView.setAdapter(adapter_json_volly);
     }
 
     private void showData() {

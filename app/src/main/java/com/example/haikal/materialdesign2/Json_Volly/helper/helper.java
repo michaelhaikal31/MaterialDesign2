@@ -5,5 +5,5 @@ package com.example.haikal.materialdesign2.Json_Volly.helper;
  */
 
 public class helper {
-    public static String main_url = "";
+    public static String main_url = "http://localhost/phone/";
 }

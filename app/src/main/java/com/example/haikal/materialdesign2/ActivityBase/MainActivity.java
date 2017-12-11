@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.example.haikal.materialdesign2.AndroidSpeech.SpeechActivity;
 import com.example.haikal.materialdesign2.Dialog.DialogActivity;
 import com.example.haikal.materialdesign2.DragAndSwipeRecyclerView.DragAndSwipeRecyclerViewActivity;
+import com.example.haikal.materialdesign2.Json_Volly.Activity.Json_VollyActivity;
 import com.example.haikal.materialdesign2.NavigationTabStap.NavigationTapStapActivity;
 import com.example.haikal.materialdesign2.Notifications.NotoficationsActivity;
 import com.example.haikal.materialdesign2.R;
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 9:
                         startActivity(new Intent(getBaseContext(), ZooActivity.class));
+                        break;
+                    case 10 : startActivity(new Intent(getBaseContext(), Json_VollyActivity.class));
                         break;
                     default:
                         break;
