@@ -2,6 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "com.example.haikal.materialdesign2"
         minSdkVersion 14
@@ -56,4 +59,7 @@ dependencies {
     compile 'com.github.bumptech.glide:volley-integration:1.4.0'
     //cardview
     compile 'com.android.support:cardview-v7:26.1.+'
+
+    //NameValuePair
+    compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
 }
