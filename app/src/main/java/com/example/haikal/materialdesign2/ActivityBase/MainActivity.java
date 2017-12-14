@@ -17,6 +17,7 @@ import com.example.haikal.materialdesign2.AndroidSpeech.SpeechActivity;
 import com.example.haikal.materialdesign2.Dialog.DialogActivity;
 import com.example.haikal.materialdesign2.DragAndSwipeRecyclerView.DragAndSwipeRecyclerViewActivity;
 import com.example.haikal.materialdesign2.Json_Volly.Activity.Json_VollyActivity;
+import com.example.haikal.materialdesign2.MakerInstitute.MakerInstituteActivity;
 import com.example.haikal.materialdesign2.NavigationTabStap.NavigationTapStapActivity;
 import com.example.haikal.materialdesign2.Notifications.NotoficationsActivity;
 import com.example.haikal.materialdesign2.R;
@@ -74,7 +75,11 @@ public class MainActivity extends AppCompatActivity {
                     case 9:
                         startActivity(new Intent(getBaseContext(), ZooActivity.class));
                         break;
-                    case 10 : startActivity(new Intent(getBaseContext(), Json_VollyActivity.class));
+                    case 10:
+                        startActivity(new Intent(getBaseContext(), Json_VollyActivity.class));
+                        break;
+                    case 11:
+                        startActivity(new Intent(getBaseContext(), MakerInstituteActivity.class));
                         break;
                     default:
                         break;

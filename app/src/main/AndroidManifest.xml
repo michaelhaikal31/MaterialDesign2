@@ -8,8 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:allowBackup="true"
         android:name=".Json_Volly.App.AppController"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -45,7 +45,8 @@
             android:name=".SoundRecorder.SettingAcity.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".Zoo.ZooActivity" />
-        <activity android:name=".Json_Volly.Activity.Json_VollyActivity"></activity>
+        <activity android:name=".Json_Volly.Activity.Json_VollyActivity" />
+        <activity android:name=".MakerInstitute.MakerInstituteActivity"></activity>
     </application>
 
 </manifest>
