@@ -46,7 +46,8 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".Zoo.ZooActivity" />
         <activity android:name=".Json_Volly.Activity.Json_VollyActivity" />
-        <activity android:name=".MakerInstitute.MakerInstituteActivity"></activity>
+        <activity android:name=".MakerInstitute.MakerInstituteActivity" />
+        <activity android:name=".Botton_Sheet.Botton_SheetActivity"></activity>
     </application>
 
 </manifest>
